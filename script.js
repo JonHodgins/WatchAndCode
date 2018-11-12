@@ -1,58 +1,58 @@
-let todoList = {
+const todoList = {
   todos: [],
-  displayTodos: function() {
+  displayTodos() {
     if (this.todos.length === 0) {
-      console.log("There are no todos!");
+      console.log('There are no todos!');
     } else {
-      console.log("My todos:");
-      for (let i = 0; i < this.todos.length; i++) {
-        let todo = this.todos[i];
+      console.log('My todos:');
+      for (let i = 0; i < this.todos.length; i += 1) {
+        const todo = this.todos[i];
         if (todo.completed) {
-          console.log("(x)", todo.todoText);
+          console.log('(x)', todo.todoText);
         } else {
-          console.log("( )", todo.todoText);
+          console.log('( )', todo.todoText);
         }
       }
     }
   },
 
-  addTodo: function(todoText) {
+  addTodo(todoText) {
     this.todos.push({
-      todoText: todoText,
+      todoText,
       completed: false
     });
     this.displayTodos();
   },
-  changeTodo: function(index, todoText) {
+  changeTodo(index, todoText) {
     this.todos[index].todoText = todoText;
     this.displayTodos();
   },
-  deleteTodo: function(index) {
+  deleteTodo(index) {
     this.todos.splice(index, 1);
     this.displayTodos();
   },
-  toggleCompleted: function(index) {
-    let todo = this.todos[index];
+  toggleCompleted(index) {
+    const todo = this.todos[index];
     todo.completed = !todo.completed;
     this.displayTodos();
   },
-  toggleAll: function() {
+  toggleAll() {
     let allTrue = true;
-    //Check if every todo is complete
-    for (let i = 0; i < this.todos.length; i++) {
+    // Check if every todo is complete
+    for (let i = 0; i < this.todos.length; i += 1) {
       if (this.todos[i].completed === false) {
         allTrue = false;
         break;
       }
     }
-    //If every todo is complete, set them all to false
+    // If every todo is complete, set them all to false
     if (allTrue) {
-      for (let i = 0; i < this.todos.length; i++) {
+      for (let i = 0; i < this.todos.length; i += 1) {
         this.todos[i].completed = false;
       }
-      //Otherwise, set them all to true
+      // Otherwise, set them all to true
     } else {
-      for (let i = 0; i < this.todos.length; i++) {
+      for (let i = 0; i < this.todos.length; i += 1) {
         this.todos[i].completed = true;
       }
     }
@@ -60,22 +60,16 @@ let todoList = {
   }
 };
 
-// let displayTodosButton = document.getElementById("displayTodosButton");
-// let toggleAllButton = document.getElementById("toggleAllButton");
-
-// displayTodosButton.addEventListener("click", function() {
-//   todoList.displayTodos();
-// });
-
-// toggleAllButton.addEventListener("click", function() {
-//   todoList.toggleAll();
-// });
-
-let handlers = {
-  displayTodos: function() {
+const handlers = {
+  displayTodos() {
     todoList.displayTodos();
   },
-  toggleAll: function() {
+  toggleAll() {
     todoList.toggleAll();
+  },
+  addTodo() {
+    const addTodoTextInput = document.getElementById('addTodoTextInput');
+    todoList.addTodo(addTodoTextInput.value);
+    addTodoTextInput.value = '';
   }
 };
