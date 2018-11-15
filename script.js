@@ -97,6 +97,7 @@ let view = {
     todosUl.innerHTML = '';
     for (let i = 0; i < todoList.todos.length; i += 1) {
       let todosLi = document.createElement('li');
+      todosLi.textContent = todoList.todos[i].todoText;
       todosUl.appendChild(todosLi);
     }
   }
