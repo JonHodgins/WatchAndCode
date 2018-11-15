@@ -90,3 +90,14 @@ const handlers = {
     todoList.toggleAll();
   }
 };
+
+let view = {
+  displayTodos() {
+    let todosUl = document.querySelector('ul');
+    todosUl.innerHTML = '';
+    for (let i = 0; i < todoList.todos.length; i += 1) {
+      let todosLi = document.createElement('li');
+      todosUl.appendChild(todosLi);
+    }
+  }
+};
