@@ -64,12 +64,29 @@ const handlers = {
   displayTodos() {
     todoList.displayTodos();
   },
-  toggleAll() {
-    todoList.toggleAll();
-  },
   addTodo() {
-    const addTodoTextInput = document.getElementById('addTodoTextInput');
+    let addTodoTextInput = document.getElementById('addTodoTextInput');
     todoList.addTodo(addTodoTextInput.value);
     addTodoTextInput.value = '';
+  },
+  changeTodo() {
+    let changeTodoTextInput = document.getElementById('changeTodoTextInput');
+    let changeTodoIndexInput = document.getElementById('changeTodoIndexInput');
+    todoList.changeTodo(changeTodoIndexInput.valueAsNumber, changeTodoTextInput.value);
+    changeTodoIndexInput.value = '';
+    changeTodoTextInput.value = '';
+  },
+  deleteTodo() {
+    let deleteTodoIndexInput = document.getElementById('deleteTodoIndexInput');
+    todoList.deleteTodo(deleteTodoIndexInput.valueAsNumber);
+    deleteTodoIndexInput.value = '';
+  },
+  toggleCompleted() {
+    let toggleCompletedIndexInput = document.getElementById('toggleCompletedIndexInput');
+    todoList.toggleCompleted(toggleCompletedIndexInput.valueAsNumber);
+    toggleCompletedIndexInput.value = '';
+  },
+  toggleAll() {
+    todoList.toggleAll();
   }
 };

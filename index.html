@@ -15,7 +15,23 @@
 
   <div>
     <button onclick="handlers.addTodo()">Add</button>
-    <input id="addTodoTextInput" type="text" />
+    <input id="addTodoTextInput" type="text">
+  </div>
+
+  <div>
+    <button onclick="handlers.changeTodo()">Change</button>
+    <input id="changeTodoIndexInput" type="number">
+    <input id="changeTodoTextInput" type="text">
+  </div>
+
+  <div>
+    <button onclick="handlers.deleteTodo()">Delete</button>
+    <input id="deleteTodoIndexInput" type="number">
+  </div>
+
+  <div>
+    <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
+    <input id="toggleCompletedIndexInput" type="number">
   </div>
 
   <script src="script.js"></script>
