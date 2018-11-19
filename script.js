@@ -60,29 +60,30 @@ const todoList = {
   }
 };
 
+// eslint-disable-next-line no-unused-vars
 const handlers = {
   displayTodos() {
     todoList.displayTodos();
   },
   addTodo() {
-    let addTodoTextInput = document.getElementById('addTodoTextInput');
+    const addTodoTextInput = document.getElementById('addTodoTextInput');
     todoList.addTodo(addTodoTextInput.value);
     addTodoTextInput.value = '';
   },
   changeTodo() {
-    let changeTodoTextInput = document.getElementById('changeTodoTextInput');
-    let changeTodoIndexInput = document.getElementById('changeTodoIndexInput');
+    const changeTodoTextInput = document.getElementById('changeTodoTextInput');
+    const changeTodoIndexInput = document.getElementById('changeTodoIndexInput');
     todoList.changeTodo(changeTodoIndexInput.valueAsNumber, changeTodoTextInput.value);
     changeTodoIndexInput.value = '';
     changeTodoTextInput.value = '';
   },
   deleteTodo() {
-    let deleteTodoIndexInput = document.getElementById('deleteTodoIndexInput');
+    const deleteTodoIndexInput = document.getElementById('deleteTodoIndexInput');
     todoList.deleteTodo(deleteTodoIndexInput.valueAsNumber);
     deleteTodoIndexInput.value = '';
   },
   toggleCompleted() {
-    let toggleCompletedIndexInput = document.getElementById('toggleCompletedIndexInput');
+    const toggleCompletedIndexInput = document.getElementById('toggleCompletedIndexInput');
     todoList.toggleCompleted(toggleCompletedIndexInput.valueAsNumber);
     toggleCompletedIndexInput.value = '';
   },
@@ -91,13 +92,20 @@ const handlers = {
   }
 };
 
-let view = {
+// eslint-disable-next-line no-unused-vars
+const view = {
   displayTodos() {
-    let todosUl = document.querySelector('ul');
+    const todosUl = document.querySelector('ul');
     todosUl.innerHTML = '';
     for (let i = 0; i < todoList.todos.length; i += 1) {
-      let todosLi = document.createElement('li');
-      todosLi.textContent = todoList.todos[i].todoText;
+      const todosLi = document.createElement('li');
+      let todoTextWithCompletion = '';
+      if (todoList.todos[i].completed === true) {
+        todoTextWithCompletion = `(x) ${todoList.todos[i].todoText}`;
+      } else {
+        todoTextWithCompletion = '( ) ' + todoList.todos[i].todoText;
+      }
+      todosLi.textContent = todoTextWithCompletion;
       todosUl.appendChild(todosLi);
     }
   }
