@@ -39,7 +39,6 @@ const todoList = {
   }
 };
 
-// eslint-disable-next-line no-unused-vars
 const view = {
   displayTodos() {
     const todosUl = document.querySelector('ul');
@@ -53,12 +52,18 @@ const view = {
         todoTextWithCompletion = `( ) ${todoList.todos[i].todoText}`;
       }
       todosLi.textContent = todoTextWithCompletion;
+      todosLi.appendChild(this.createDeleteButton());
       todosUl.appendChild(todosLi);
     }
+  },
+  createDeleteButton() {
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'delete';
+    deleteButton.className = 'deleteButton';
+    return deleteButton;
   }
 };
 
-// eslint-disable-next-line no-unused-vars
 const handlers = {
   addTodo() {
     const addTodoTextInput = document.getElementById('addTodoTextInput');
