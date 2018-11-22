@@ -61,7 +61,6 @@ const view = {
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'delete';
     deleteButton.className = 'deleteButton';
-    // deleteButton.addEventListener('click', todoList.deleteTodo(todoId));
     return deleteButton;
   },
   setupEventListeners() {
