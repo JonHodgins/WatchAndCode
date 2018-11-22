@@ -18,7 +18,6 @@ const todoList = {
   },
   toggleAll() {
     let allTrue = true;
-
     // Check if every todo is complete
     this.todos.forEach(todo => {
       if (todo.completed === false) {
@@ -26,33 +25,15 @@ const todoList = {
       }
     });
 
-    // Set all todos to complete or to incomplete depending on their current state
     this.todos.forEach(todo => {
+      // Case 1: If everything is true, make everything false
       if (allTrue) {
         todo.completed = false;
+        // Case 2: Otherwise, make everything true
       } else {
         todo.completed = true;
       }
     });
-
-    // Check if every todo is complete
-    // for (let i = 0; i < this.todos.length; i += 1) {
-    //   if (this.todos[i].completed === false) {
-    //     allTrue = false;
-    //     break;
-    //   }
-    // }
-    // // If every todo is complete, set them all to false
-    // if (allTrue) {
-    //   for (let i = 0; i < this.todos.length; i += 1) {
-    //     this.todos[i].completed = false;
-    //   }
-    //   // Otherwise, set them all to true
-    // } else {
-    //   for (let i = 0; i < this.todos.length; i += 1) {
-    //     this.todos[i].completed = true;
-    //   }
-    // }
   }
 };
 
@@ -60,21 +41,21 @@ const view = {
   displayTodos() {
     const todosUl = document.querySelector('ul');
     todosUl.innerHTML = '';
-    for (let i = 0; i < todoList.todos.length; i += 1) {
+    todoList.todos.forEach((todo, index) => {
       const todosLi = document.createElement('li');
       let todoTextWithCompletion = '';
 
-      if (todoList.todos[i].completed === true) {
-        todoTextWithCompletion = `(x) ${todoList.todos[i].todoText}`;
+      if (todo.completed === true) {
+        todoTextWithCompletion = `(x) ${todo.todoText}`;
       } else {
-        todoTextWithCompletion = `( ) ${todoList.todos[i].todoText}`;
+        todoTextWithCompletion = `( ) ${todo.todoText}`;
       }
 
-      todosLi.id = i;
+      todosLi.id = index;
       todosLi.textContent = todoTextWithCompletion;
       todosLi.appendChild(this.createDeleteButton());
       todosUl.appendChild(todosLi);
-    }
+    }, this);
   },
   createDeleteButton() {
     const deleteButton = document.createElement('button');
